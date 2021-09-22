@@ -3,7 +3,8 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const viewModel =  { title: 'Express', author:'Miguel Angel', appName:'webApp' };
+  const viewModel =  { title: 'Express', author:'Miguel Angel', appName:'webApp',
+company:'awsome software' };
   res.render('index',viewModel); //view model
 });
 // nueva ruta 
