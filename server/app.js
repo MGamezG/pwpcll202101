@@ -5,8 +5,8 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import indexRouter from '@s-routes/index';
+import usersRouter from '@s-routes/users';
 
 var app = express();
 
@@ -18,7 +18,7 @@ app.use(logger('dev')); //req=>[middelware 01] => [middelware 02]
 app.use(express.json());// transformador a json
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());//manejo e cookies
-app.use(express.static(path.join(__dirname, 'public')));// refrerencia a la parte estatica 
+app.use(express.static(path.join(__dirname,'..', 'public')));// refrerencia a la parte estatica 
 
 
 app.use('/', indexRouter);

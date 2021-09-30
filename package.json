@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist-server/bin/www",
+    "start": " node ./dist-server/bin/www",
     "w:d": "babel-watch ./server/bin/www",
     "clean": "rimraf dist-server",
     "b:s": "npm run clean && babel ./server --out-dir dist-server --copy-files"
@@ -22,6 +22,13 @@
     "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
-    "babel-watch": "^7.5.0"
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-preset-minify": "^0.5.1",
+    "babel-watch": "^7.5.0",
+    "webpack": "^5.55.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-middleware": "^5.2.1",
+    "webpack-dev-server": "^4.3.0",
+    "webpack-hot-middleware": "^2.25.1"
   }
 }
