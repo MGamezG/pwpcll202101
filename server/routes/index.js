@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  const viewModel =  { title: 'Express', author:'Miguel Angel Gamez', appName:'webApp',
+  const viewModel =  { title: 'Express', author:'Miguel Angel Gamez Guadarrama', appName:'webApp',
 company:'awsome software' };
   res.render('index',viewModel); //view model
 });
