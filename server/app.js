@@ -4,7 +4,8 @@ import createError from 'http-errors';
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
-import logger from 'morgan';
+import morgan from 'morgan';
+import Winston from 'winston';
 
 import indexRouter from '@s-routes/index';
 import usersRouter from '@s-routes/users';
@@ -57,7 +58,7 @@ if (env === 'development') {
 // view engine setup
 configTemplateEngine(app);
 
-app.use(logger('dev')); // req=>[middelware 01] => [middelware 02]
+app.use(morgan('combined', { stream: Winston.stream })); // req=>[middelware 01] => [middelware 02]
 app.use(express.json()); // transformador a json
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser()); // manejo e cookies
