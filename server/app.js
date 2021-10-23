@@ -7,8 +7,8 @@ import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import Winston from '@server/config/winston';
 
-import indexRouter from '@s-routes/index';
-import usersRouter from '@s-routes/users';
+// improtando el router principal
+import router from '@server/routes/index';
 
 // improt configurations
 import configTemplateEngine from '@s-config/template-engine.js';
@@ -64,8 +64,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser()); // manejo e cookies
 app.use(express.static(path.join(__dirname, '..', 'public'))); // refrerencia a la parte estatica
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// instalando el enrutador principal a la aplicaion express
+router.addRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
