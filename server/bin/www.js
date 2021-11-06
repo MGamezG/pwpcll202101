@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 import Winston from '@server/config/winston';
+// importando configuraciones de aplicacion
+import configkeys from '@server/config/configkeys';
 /**
  * Module dependencies.
  */
@@ -31,7 +33,7 @@ function normalizePort(val) {
  * Get port from environment and store inn Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(configkeys.port || '3000');
 app.set('port', port);
 
 /**
