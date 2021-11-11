@@ -2,6 +2,8 @@
 import Winston from '@server/config/winston';
 // importando configuraciones de aplicacion
 import configkeys from '@server/config/configkeys';
+// importando la clase de conexion
+import MongooseODM from '@server/config/odm';
 /**
  * Module dependencies.
  */
@@ -75,11 +77,21 @@ function onListening() {
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on  ${bind}`);
 }
+// creando el objeto de conexion
+const mongooseOdm = new MongooseODM(configkeys.databaseUrl);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+// IIFE
+(async () => {
+  try {
+    const connectionResult = await mongooseOdm.connect();
+    if (connectionResult) {
+      Winston.info('conexion a la base de datos establecida');
+      // puertos
+      server.listen(port);
+      server.on('error', onError);
+      server.on('listening', onListening);
+    }
+  } catch (error) {
+    Winston.error(`no se pudo inicar el servidor: ${error.message}`);
+  }
+})();
