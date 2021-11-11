@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 /* eslint-disable no-console */
 import createError from 'http-errors';
 import express from 'express';
