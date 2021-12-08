@@ -19,7 +19,7 @@ winston.addColors(colors);
 const myFormat = combine(
   colorize({ all: true }),
   timestamp(),
-  printf((info) => `${info.timestamp} ${info.level} : ${info.messages}`),
+  printf((info) => `${info.timestamp} ${info.level} : ${info.message}`),
 );
 
 // formato para la salida de los archivos de log

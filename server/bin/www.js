@@ -85,13 +85,16 @@ const mongooseOdm = new MongooseODM(configkeys.databaseUrl);
   try {
     const connectionResult = await mongooseOdm.connect();
     if (connectionResult) {
-      Winston.info('conexion a la base de datos establecida');
-      // puertos
+      Winston.info('Connection to data base has successfuly established');
+      /**
+       * Listen on provided port, on all network interfaces.
+       */
+
       server.listen(port);
       server.on('error', onError);
       server.on('listening', onListening);
     }
   } catch (error) {
-    Winston.error(`no se pudo inicar el servidor: ${error.message}`);
+    Winston.error(`Error when connecting to Database : ${error.message}`);
   }
 })();

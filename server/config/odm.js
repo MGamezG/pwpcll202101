@@ -1,29 +1,29 @@
 /* eslint-disable prettier/prettier */
-// importando blibliotecas de odm
+// Importando biblioteca ODM
 import mongoose from 'mongoose';
-// importando escrip para el log
+// Importando script para el log
 import winston from './winston';
 
 class MongooseODM {
-  // constructor
+  // Constructor
   constructor(url) {
     this.url = url;
   }
 
-  // metodo de conexion
+  // Metodo de conexion
   async connect() {
+    // Sustituyendo el sistema de promesas de mongoose por el Javascript
     mongoose.Promise = global.Promise;
-    winston.info(`conectando a la base de datos:${this.url}`);
+    winston.info(`Conectando a la base de datos en : ${this.url}`);
     try {
-      // sustituir  el sistema de promesas  de mongoose por el de javascript
-      await mongoose.connect(this.url);
-      return true;
+    await mongoose.connect(this.url);
+    return true;
     } catch (error) {
-      winston.error(
-        `error al conectarse a la base de datos: ${error.message}`
-      );
-      return false;
+        winston.error(`Error al conectarse a la base de datos: ${error.message}`);
+    // Se retorna false en caso de que no se realice una conexion exitosa 
+    return false; 
     }
+    
   }
-};
-export default MongooseODM;
+  }
+  export default MongooseODM; 
