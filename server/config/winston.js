@@ -2,6 +2,10 @@
 import winston, { ExitOnError, format, transports } from 'winston';
 //
 import appRoot from 'app-root-path';
+import e from 'express';
+
+
+
 // componentes para el formato personalizado
 const { combine, timestamp, printf, uncolorize, json, colorize } = format;
 // perfil de color para el log
@@ -41,7 +45,7 @@ const options = {
     handleException: true,
     maxsize: 5242880, // 5mb
     maxFiles: 5,
-    format: myFileFormat,
+   format: myFileFormat,
   },
   errorFile: {
     level: 'error',
